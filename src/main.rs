@@ -8,15 +8,13 @@ fn main() -> std::io::Result<()> {
     let mut contents = String::new();
     file.read_to_string(&mut contents)?;
     drop(file);
-    let parsed = json::parse(&*contents).unwrap();
-    let keys = &parsed["levels"][0]["keys"];
-    let type_key = &keys["type"];
-    let value_key = &keys["value"];
-    // let key1 = key::Key {
-    //     type_: type_key.as_str().unwrap(),
-    //     value: value_key.as_str().unwrap()
-    // };
+    let parsed = json::parse(&*contents).expect("must be valid json");
+    let key = &parsed["levels"][0]["keys"][0];
+    let key1 = key::Key {
+        type_: &key["type"].as_str().unwrap(),
+        value: &key["value"].as_str().unwrap()
+    };
 
-    println!("{} - {}", type_key, value_key);
+    println!("{}", key1);
     Ok(())
 }
