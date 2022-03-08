@@ -1,12 +1,15 @@
 use std::fmt::{Display, Formatter};
+use serde::{Deserialize, Serialize};
 
-pub struct Key<'a> {
-    pub type_: &'a str,
-    pub value: &'a str,
+#[derive(Serialize, Deserialize)]
+pub struct Key {
+    #[serde(rename = "type")]
+    pub type_: String,
+    pub value: String,
 }
 
-impl Display for Key<'_> {
+impl Display for Key {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        write!(f, "Key={}", self.value)
+        write!(f, "Key={}", &self.value)
     }
 }
