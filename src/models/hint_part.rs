@@ -1,3 +1,6 @@
-struct HintPart {
+use serde::{Deserialize, Serialize};
+
+#[derive(Serialize, Deserialize)]
+pub(crate) struct HintPart {
 
 }

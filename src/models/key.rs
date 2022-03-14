@@ -2,7 +2,7 @@ use std::fmt::{Display, Formatter};
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize)]
-pub struct Key {
+pub(crate) struct Key {
     #[serde(rename = "type")]
     pub type_: String,
     pub value: String,
