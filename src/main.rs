@@ -9,7 +9,7 @@ mod models;
 
 fn main() -> std::io::Result<()> {
     let parsed: Value = serde_json::from_reader(
-        &File::open("resources/mlp_test_text_and_gps.json")?
+        &File::open("resources/mlp.json")?
     )?;
     let game: Game = serde_json::from_value(parsed)?;
 
