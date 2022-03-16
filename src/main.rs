@@ -14,5 +14,6 @@ fn main() -> std::io::Result<()> {
     let game: Game = serde_json::from_value(parsed)?;
 
     println!("{}\n{}", game.id, game.levels[1]);
+    serde_json::to_writer(&File::create("resources/rez.json")?, &game)?;
     Ok(())
 }
