@@ -1,3 +1,5 @@
+use std::fmt::{Display, Formatter};
+
 use serde::{Deserialize, Serialize};
 
 use super::{hint::Hint, key::Key};
@@ -5,7 +7,14 @@ use super::{hint::Hint, key::Key};
 #[derive(Serialize, Deserialize)]
 pub(crate) struct Level {
     id: String,
+    #[serde(rename = "author_ID")]
     author: i64,
     keys: Vec<Key>,
-    hints: Vec<Hint>,
+    time_hints: Vec<Hint>,
+}
+
+impl Display for Level {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}, first key: {}", &self.id, &self.keys[0])
+    }
 }
