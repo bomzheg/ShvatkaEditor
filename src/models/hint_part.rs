@@ -4,9 +4,9 @@ use serde::{Deserialize, Serialize};
 #[serde(tag = "type")]
 pub(crate) enum HintPart {
     #[serde(rename = "text")]
-    Text(TextHint),
+    Text(hint_impl::TextHint),
     #[serde(rename = "gps")]
-    GPS(GPSHint),
+    GPS(hint_impl::GPSHint),
     #[serde(rename = "venue")]
     Venue,
     #[serde(rename = "photo")]
@@ -29,13 +29,17 @@ pub(crate) enum HintPart {
     Sticker,
 }
 
-#[derive(Serialize, Deserialize)]
-pub(crate) struct TextHint {
-    text: String,
-}
+pub(crate) mod hint_impl {
+    use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize)]
-pub(crate) struct GPSHint {
-    latitude: f64,
-    longitude: f64,
+    #[derive(Serialize, Deserialize)]
+    pub(crate) struct TextHint {
+        text: String,
+    }
+
+    #[derive(Serialize, Deserialize)]
+    pub(crate) struct GPSHint {
+        latitude: f64,
+        longitude: f64,
+    }
 }
