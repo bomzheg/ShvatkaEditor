@@ -34,11 +34,13 @@ pub(crate) mod hint_impl {
 
     #[derive(Serialize, Deserialize)]
     pub(crate) struct TextHint {
+        __hint__: bool,
         text: String,
     }
 
     #[derive(Serialize, Deserialize)]
     pub(crate) struct GPSHint {
+        __hint__: bool,
         latitude: f64,
         longitude: f64,
     }

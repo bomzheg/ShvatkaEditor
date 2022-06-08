@@ -6,6 +6,7 @@ use super::{hint::Hint, key::Key};
 
 #[derive(Serialize, Deserialize)]
 pub(crate) struct Level {
+    __level__: bool,
     id: String,
     #[serde(rename = "author_ID")]
     author: i64,
